@@ -8,11 +8,22 @@ const port = 3000;
 app.use(express.json());
 // app.use(cors());
 
+// Your Chrome extension ID
+const chromeExtensionId = 'phlgeijgelnfglkjpplhlmjniadehokp';
+
+// Configure CORS to allow requests from your Chrome extension
 const corsOptions = {
-    origin: 'chrome-extension://phlgeijgelnfglkjpplhlmjniadehokp',
+    origin: `chrome-extension://${chromeExtensionId}`,
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type']
 };
+
+// Middleware to log requests for debugging
+app.use((req, res, next) => {
+    console.log(`Request received: ${req.method} ${req.url}`);
+    console.log(`Origin: ${req.get('Origin')}`);
+    next();
+});
 
 app.use(cors(corsOptions));
 
