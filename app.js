@@ -13,7 +13,10 @@ const chromeExtensionId = 'phlgeijgelnfglkjpplhlmjniadehokp';
 
 // Configure CORS to allow requests from your Chrome extension
 const corsOptions = {
-    origin: `chrome-extension://${chromeExtensionId}`,
+    origin: [
+        `chrome-extension://${chromeExtensionId}`,
+        'https://open.spotify.com'
+    ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 };
