@@ -81,11 +81,12 @@ async function checkSong(songTitle, artist) {
             return 'Clean';
         }
         let songSuitability = await checkSongSuitability(returnedLyrics);
+        if (songSuitability = 'Too many requests') return songSuitability;
         if (songSuitability == 'Pleaseprovidethetextyouwouldlikemetoanalyze.Ineedthetexttodetermineifitmeetsanyofthecriteriayoulisted.') {
             songSuitability = 'Clean';
         }
         if (songSuitability == 'Too many requests') return 'Too many requests';
-        const songSuitabilityCleanedResponse = songSuitability.replace(/\s/g, ''); // Remove newline characters
+        let songSuitabilityCleanedResponse = songSuitability.replace(/\s/g, ''); // Remove newline characters
         if (songSuitabilityCleanedResponse == 'Pleaseprovidethetextyouwouldlikemetoanalyze.Ineedthetexttodetermineifitmeetsanyofthecriteriayoulisted.') {
             songSuitabilityCleanedResponse = 'Clean';
         }
