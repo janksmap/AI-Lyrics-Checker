@@ -33,7 +33,7 @@ function normalizeTitle(title) {
 }
 
 const checkSongSuitability = async (lyrics) => {
-    const prompt = `Does the following text meet any of the following criteria: presence of swear words or foul language (including minor language), references to drugs, alcohol, sex or innuendo, and use of the Lord's name in vain? Respond with 'Clean' if the text does not match these criteria or 'Explicit' if the text does match these criteria. If unsure, respond with 'Explicit'. ${lyrics}`;
+    const prompt = `Does the following text meet any of the following criteria: presence of swear words or foul language (including minor language such as the 'd' word and the 'h' word), references to drugs, alcohol, sex or innuendo, and use of the Lord's name in vain? Respond with 'Clean' if the text does not match these criteria or 'Explicit' if the text does match these criteria. If unsure, respond with 'Explicit'. ${lyrics}`;
     console.log('Querying Gemini');
 
     try {
