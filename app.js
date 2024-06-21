@@ -3,6 +3,7 @@ const gemini = require('./gemini.js');
 const cors = require('cors');
 const app = express();
 const port = 3000;
+const api_url = '/ai-lyrics-checker/api';
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -34,11 +35,11 @@ app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
 
-app.get('/', (req, res) => {
+app.get(`${api_url}/`, (req, res) => {
     res.send(`Server running at http://localhost:${port}/`);
 });
 
-app.post('/check-lyrics', async (req, res) => {
+app.post(`${api_url}/check-lyrics`, async (req, res) => {
     const { songTitle, artist } = req.body;
 
     if (!songTitle || !artist) {
